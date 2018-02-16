@@ -5,12 +5,17 @@ namespace ScrabbleProject.Models
 {
   public class Scrabble
   {
+
     public static int counter = 0;
+
+    public static int reset()
+    {
+      return counter = 0;
+    }
 
     public int ScrabbleCalc(string word)
     {
-      string userWord = word;
-      userWord = userWord.ToUpper();
+      string userWord = word.ToUpper();
 
       var charsArray = userWord.ToCharArray();
 
@@ -29,11 +34,6 @@ namespace ScrabbleProject.Models
       }
 
       return counter;
-    }
-
-    public static void reset()
-    {
-      counter = 0;
     }
 
   }

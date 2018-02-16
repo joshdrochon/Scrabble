@@ -6,8 +6,13 @@ using System;
 namespace ScrabbleProject.TestTool
 {
   [TestClass]
-  public class ScrabbleTest
+  public class ScrabbleTest : IDisposable
   {
+    public void Dispose()
+    {
+      Scrabble.reset();
+    }
+
     [TestMethod]
     public void TestCalc_Pass()
     {
@@ -20,8 +25,16 @@ namespace ScrabbleProject.TestTool
     public void TestCalc_Fail()
     {
       Scrabble testFail = new Scrabble();
-      int testCounter = 7;
+      int testCounter = 9;
       Assert.AreEqual(testCounter, testFail.ScrabbleCalc("Ruby"));
+    }
+
+    [TestMethod]
+    public void TestCounter_Reset()
+    {
+      int expectedResult = 0;
+      int actualResult = Scrabble.reset();
+      Assert.AreEqual(expectedResult, actualResult);
     }
   }
 }
